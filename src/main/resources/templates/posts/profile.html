@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8"/>
+        <th:block th:replace="fragments/head :: header('Your Posts')"/>
+    </head>
+    <body class="min-vh-100 background">
+        <th:block th:replace="fragments/navbar :: nav"/>
+        <div class="container">
+            <div class="contain-bg card">
+                <h2 style="text-align: center;">Here are your Posts!</h2>
+            </div>
+            <th:block th:each="post : ${posts}">
+                    <!--<th:block th:if="${users}">-->
+                        <div class="contain-bg card" style="text-align: center; width: 100%">
+                            <div class="card-body">
+                                <h5 class="card-title" th:text="${post.title}"></h5>
+                                <p class="card-text" th:text="${post.body}"></p>
+                                <button class="btn btn-dark"><a th:href="@{'/posts/edit/' + ${post.getId()}}">Edit</a></button>
+                                <button class="btn btn-dark"><a th:href="@{'/posts/delete/' + ${post.getId()}}">Delete</a></button>
+                            </div>
+                        </div>
+                    <!--</th:block>-->
+            </th:block>
+        </div>
+    </body>
+</html>

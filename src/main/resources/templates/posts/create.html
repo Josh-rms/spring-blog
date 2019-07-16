@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8"/>
+        <th:block th:replace="fragments/head :: header('Create')"/>
+    </head>
+    <body class="min-vh-100 background">
+        <th:block th:replace="fragments/navbar :: nav"/>
+        <div class=" contain-bg container login-contain">
+            <h2 style="text-align: center">Create a Post!</h2>
+            <form th:action="@{/posts/create}" th:method="post" th:object="${post}">
+                <div class="form-group">
+                    <input id="input-title" class="form-control" placeholder="title" th:field="*{title}"/>
+                    <br />
+                </div>
+
+                <div class="form-group">
+                    <textarea class="col post input-post form-control" placeholder="Tell me about it" th:field="*{body}"></textarea>
+                    <br />
+                </div>
+                <button type="submit" class="btn btn-primary loginBtn">Post!</button>
+            </form>
+        </div>
+    </body>
+</html>
